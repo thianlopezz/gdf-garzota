@@ -1,0 +1,12 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Juego 1 - Adivinanza</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <card-locked *ngIf="bloqueado"></card-locked>
+  <card-pregunta [pregunta]="pregunta" (selectEvent)="respuesta($event)"></card-pregunta>
+</ion-content>
