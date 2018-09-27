@@ -2,6 +2,7 @@ export class Pregunta {
 
     idpregunta: number;
     pregunta: string;
+    puntos: number;
     respuestas: Array<Respuesta>;
 
     constructor(){
@@ -11,14 +12,14 @@ export class Pregunta {
 
 export class Respuesta {
 
-    opcion: string;
-    valida: boolean;
-    valor: number;
+    idpregunta: number;
+    respuesta: string;
+    correcta: boolean;
 
-    constructor(opcion: string, valida: boolean, valor?:number){
-
-        this.opcion = opcion;        
-        this.valida = valida;
-        this.valor = valor || 0;
+    constructor(idpregunta: number, respuesta: string, correcta: boolean){
+        
+        this.idpregunta = idpregunta;
+        this.respuesta = respuesta;        
+        this.correcta = correcta;
     }
 }

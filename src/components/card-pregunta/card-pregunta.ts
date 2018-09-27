@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Pregunta, Respuesta } from '../../models/pregunta';
 
@@ -8,21 +8,36 @@ import { Pregunta, Respuesta } from '../../models/pregunta';
 })
 export class CardPreguntaComponent {
 
+  respondida;
+
   @Input() pregunta: Pregunta;
+  @Input() loading: boolean;
+  
   @Output() selectEvent = new EventEmitter();
 
   constructor() { }
 
   valida(respuesta: Respuesta){
 
+    this.respondida = true;
+
     let valida = false;
 
-    if(respuesta.valida){
+    if(respuesta.correcta){
       valida = true;
     }
 
-    this.selectEvent.emit(valida);
+    this.selectEvent.emit({ pregunta: this.pregunta, respuesta: respuesta});
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    debugger;
+    if(changes.loading){
+      this.loading = changes.loading.currentValue;
+    }
+    if (changes.pregunta) {
+      this.respondida = false;
+    }
   }
 
 }

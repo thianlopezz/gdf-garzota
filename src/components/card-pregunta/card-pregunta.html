@@ -3,7 +3,9 @@
     Pregunta # {{pregunta.idpregunta}}
   </ion-card-header>
   <ion-card-content>
-    <p text-wrap>{{pregunta.pregunta}}</p>
-    <button *ngFor="let respuesta of pregunta.respuestas" (click)="valida(respuesta)" ion-button outline>{{respuesta.opcion}}</button>
+    <p text-wrap>
+      {{pregunta.pregunta}}</p>
+    <button *ngFor="let respuesta of pregunta.respuestas" (click)="valida(respuesta)" ion-button outline>{{respuesta.respuesta}}</button>
+    <ion-spinner *ngIf="loading"></ion-spinner>
   </ion-card-content>
 </ion-card>

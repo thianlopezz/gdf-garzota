@@ -1,12 +1,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Juego 1 - Adivinanza</ion-title>
+    <ion-title>Trivia</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="getPregunta($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <card-locked *ngIf="bloqueado"></card-locked>
-  <card-pregunta [pregunta]="pregunta" (selectEvent)="respuesta($event)"></card-pregunta>
+  <card-pregunta *ngIf="!bloqueado" [pregunta]="pregunta" [loading]="loading" (selectEvent)="respuesta($event)"></card-pregunta>
 </ion-content>

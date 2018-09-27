@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Puntos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="buscaPuntos($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <ion-card-header>
+      <h1 class="puntos">{{puntos}}</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Puntos acumulados</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
